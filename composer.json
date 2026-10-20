@@ -44,7 +44,5 @@
         "RabbitEvents\\Deduplication\\DeduplicationServiceProvider"
       ]
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }

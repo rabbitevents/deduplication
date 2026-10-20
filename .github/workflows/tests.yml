@@ -2,11 +2,6 @@ name: Tests
 
 on: [push, pull_request]
 
-env:
-  # rabbitevents/foundation and rabbitevents/listener ^10.0 are not on Packagist yet:
-  # take them from this branch of rabbitevents/rabbitevents. Drop the two steps once 10.0 is released.
-  RABBITEVENTS_REF: '10.x'
-
 jobs:
   phpunit:
     runs-on: ubuntu-latest
@@ -18,13 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Checkout RabbitEvents ${{ env.RABBITEVENTS_REF }}
-        uses: actions/checkout@v6
-        with:
-          repository: rabbitevents/rabbitevents
-          ref: ${{ env.RABBITEVENTS_REF }}
-          path: .rabbitevents
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -32,11 +20,6 @@ jobs:
           extensions: mbstring, sockets
           tools: composer:v2
           coverage: none
-
-      - name: Use RabbitEvents ${{ env.RABBITEVENTS_REF }}
-        run: |
-          composer config repositories.rabbitevents-foundation '{"type": "path", "url": ".rabbitevents/src/RabbitEvents/Foundation", "options": {"versions": {"rabbitevents/foundation": "10.0.x-dev"}}}'
-          composer config repositories.rabbitevents-listener '{"type": "path", "url": ".rabbitevents/src/RabbitEvents/Listener", "options": {"versions": {"rabbitevents/listener": "10.0.x-dev"}}}'
 
       - name: Install dependencies
         run: composer update --prefer-dist --no-interaction --no-progress
@@ -50,13 +33,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Checkout RabbitEvents ${{ env.RABBITEVENTS_REF }}
-        uses: actions/checkout@v6
-        with:
-          repository: rabbitevents/rabbitevents
-          ref: ${{ env.RABBITEVENTS_REF }}
-          path: .rabbitevents
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -64,11 +40,6 @@ jobs:
           extensions: mbstring, sockets
           tools: composer:v2
           coverage: none
-
-      - name: Use RabbitEvents ${{ env.RABBITEVENTS_REF }}
-        run: |
-          composer config repositories.rabbitevents-foundation '{"type": "path", "url": ".rabbitevents/src/RabbitEvents/Foundation", "options": {"versions": {"rabbitevents/foundation": "10.0.x-dev"}}}'
-          composer config repositories.rabbitevents-listener '{"type": "path", "url": ".rabbitevents/src/RabbitEvents/Listener", "options": {"versions": {"rabbitevents/listener": "10.0.x-dev"}}}'
 
       - name: Install dependencies
         run: composer update --prefer-dist --no-interaction --no-progress

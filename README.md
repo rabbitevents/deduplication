@@ -55,7 +55,7 @@ vendor/bin/phpunit
 vendor/bin/phpstan analyse
 ```
 
-GitHub Actions (`.github/workflows/tests.yml`) runs PHPUnit on PHP 8.2–8.4 and PHPStan. Until RabbitEvents 10.0 is on Packagist, the workflow takes `rabbitevents/foundation` and `rabbitevents/listener` from the `10.x` branch of `rabbitevents/rabbitevents` (`RABBITEVENTS_REF`).
+GitHub Actions (`.github/workflows/tests.yml`) runs PHPUnit on PHP 8.2–8.4 and PHPStan.
 
 ## License
 
