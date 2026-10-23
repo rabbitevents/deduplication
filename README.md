@@ -55,8 +55,6 @@ vendor/bin/phpunit
 vendor/bin/phpstan analyse
 ```
 
-GitHub Actions (`.github/workflows/tests.yml`) runs PHPUnit on PHP 8.2–8.4 and PHPStan.
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
